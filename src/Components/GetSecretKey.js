@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { supabase } from "../Utils/supabase";
+import { Copy } from "lucide-react";
 
 const GetSecretKey = () => {
   const [message, setMessage] = useState("");
@@ -26,6 +27,11 @@ const GetSecretKey = () => {
     }
   };
 
+  const handleCopy = () => {
+    const value = document.getElementById("uniqueId").innerHTML;
+    navigator.clipboard.writeText(value);
+  };
+
   return (
     <div className="d-flex flex-column justify-content-center align-items-center gap-2 my-4 w-100">
       <input
@@ -38,7 +44,18 @@ const GetSecretKey = () => {
       <button type="button" className="btn btn-md" onClick={handleSecretKey}>
         Get Secret Key
       </button>
-      {uniqueId !== "" && <p>Save your secret key:- {uniqueId}</p>}
+
+      {uniqueId !== "" && (
+        <p>
+          Save your secret key:- <span id="uniqueId">{uniqueId}</span>
+        </p>
+      )}
+      {uniqueId !== "" && (
+        <button className="copy-button" onClick={handleCopy}>
+          <Copy size={12} />
+          &nbsp;copy
+        </button>
+      )}
     </div>
   );
 };

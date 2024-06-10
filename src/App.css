@@ -47,3 +47,30 @@
   border-radius: 2px;
   border: 0px;
 }
+
+.App .copy-button {
+  border: 0px;
+  background-color: #bbb;
+  border-radius: 4px;
+  color: #fff;
+}
+
+@media screen and (max-width: 900px) {
+  .App h2 {
+    font-size: 2.8rem;
+    color: rgb(145, 85, 253);
+  }
+  .App .online-clipboard-wrapper {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .App h2 {
+    font-size: 2.2rem;
+    color: rgb(145, 85, 253);
+  }
+  .App .online-clipboard-wrapper {
+    width: 90%;
+  }
+}
