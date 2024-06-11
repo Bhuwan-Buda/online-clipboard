@@ -35,17 +35,16 @@
 }
 
 .App .online-clipboard-wrapper .nav-tabs .nav-item button.nav-link.active {
-  color: rgb(145, 85, 253);
-  border-width: 0px 0px 2px 0px;
-  border-style: solid;
-  border-color: rgb(145, 85, 253);
+  background-color: rgb(145, 85, 253);
+  color: #fff;
 }
 
 .App .online-clipboard-wrapper .nav-tabs .nav-item button.nav-link {
   background-color: #fff;
   color: #888;
-  border-radius: 2px;
-  border: 0px;
+  border-radius: 0px;
+  border: 1px solid #fff;
+  margin: 0;
 }
 
 .App .copy-button {

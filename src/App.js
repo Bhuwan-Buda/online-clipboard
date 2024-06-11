@@ -42,7 +42,7 @@ function App() {
                 aria-controls="get-secret-key"
                 aria-selected="true"
               >
-                Get Secret Key
+                Save Message
               </button>
             </li>
             <li className="nav-item" role="presentation">
