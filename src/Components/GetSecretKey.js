@@ -3,6 +3,7 @@ import { supabase } from "../Utils/supabase";
 import { Copy } from "lucide-react";
 
 const GetSecretKey = () => {
+  const [copied, setCopied] = useState(false);
   const [message, setMessage] = useState("");
   const [uniqueId, setUniqueId] = useState("");
 
@@ -31,9 +32,15 @@ const GetSecretKey = () => {
     }
   };
 
-  const handleCopy = () => {
+  const handleCopy = async () => {
     const value = document.getElementById("uniqueId").innerHTML;
     navigator.clipboard.writeText(value);
+    const copiedText = await navigator.clipboard.readText();
+    if (copiedText === uniqueId) {
+      setCopied(true);
+    } else {
+      setCopied(false);
+    }
   };
 
   return (
@@ -44,6 +51,7 @@ const GetSecretKey = () => {
           className="form-control"
           placeholder="Enter your message here..."
           value={message}
+          autoFocus
           onChange={(e) => setMessage(e.target.value)}
         />
         <button type="button" className="btn btn-md" onClick={handleSecretKey}>
@@ -59,9 +67,13 @@ const GetSecretKey = () => {
               </span>
               "
             </p>
-            <button className="copy-button" onClick={handleCopy}>
+            <button
+              className="copy-button"
+              onClick={handleCopy}
+              disabled={copied}
+            >
               <Copy size={12} />
-              &nbsp;copy
+              {copied ? " copied" : " copy"}
             </button>
           </div>
         )}

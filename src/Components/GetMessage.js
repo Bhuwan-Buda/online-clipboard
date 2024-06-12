@@ -3,6 +3,7 @@ import useWindowSize from "react-use/lib/useWindowSize";
 import Confetti from "react-confetti";
 import { supabase } from "../Utils/supabase";
 import { SendHorizontal } from "lucide-react";
+import confettiSound from "../assets/confetti-sound.mp3";
 
 const GetMessage = () => {
   const { width, height } = useWindowSize();
@@ -10,13 +11,21 @@ const GetMessage = () => {
   const [fetchedMessage, setFetchedMessage] = useState("");
 
   const handleGetMessage = async () => {
+    setFetchedMessage("");
     try {
       if (secretKey !== "") {
         const { data } = await supabase
           .from("messages")
           .select("message")
           .eq("uniqueId", secretKey);
-        setFetchedMessage(data[0]?.message);
+        if (data?.length > 0) {
+          const newAudio = new Audio(confettiSound);
+          await newAudio.play();
+          setFetchedMessage(data[0]?.message);
+        } else {
+          alert("Invalid secret key.");
+        }
+        setSecretKey("");
       } else {
         alert("Enter secret key.");
         setSecretKey("");
@@ -46,6 +55,7 @@ const GetMessage = () => {
       <div className="d-flex flex-column justify-content-center align-items-center gap-2 my-4 w-100">
         <input
           type="text"
+          autoFocus
           className="form-control"
           placeholder="Enter your secret key here..."
           value={secretKey}
