@@ -24,7 +24,12 @@ function App() {
 
   return (
     <div className="App">
-      <h2 className="text-center"> - Online Clipboard -</h2>
+      <div>
+        <h2 className="text-center px-1"> - Message Encrypter -</h2>
+        <p className="text-center px-1">
+          Encrypt your message with unique id and share it to closed ones.
+        </p>
+      </div>
       <div className="online-clipboard-wrapper">
         <div className="d-flex align-item-center justify-content-center">
           <ul className="nav nav-tabs" id="online-clipboard-tab" role="tablist">
@@ -42,7 +47,7 @@ function App() {
                 aria-controls="get-secret-key"
                 aria-selected="true"
               >
-                Save Message
+                Encrypt Message
               </button>
             </li>
             <li className="nav-item" role="presentation">

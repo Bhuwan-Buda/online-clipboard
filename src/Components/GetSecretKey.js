@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { supabase } from "../Utils/supabase";
-import { Copy } from "lucide-react";
+import { Copy, SendHorizontal } from "lucide-react";
 
 const GetSecretKey = () => {
   const [copied, setCopied] = useState(false);
@@ -55,7 +55,7 @@ const GetSecretKey = () => {
           onChange={(e) => setMessage(e.target.value)}
         />
         <button type="button" className="btn btn-md" onClick={handleSecretKey}>
-          <Copy size={16} /> Copy to Clipboard
+          <SendHorizontal size={16} /> Submit
         </button>
 
         {uniqueId !== "" && (
