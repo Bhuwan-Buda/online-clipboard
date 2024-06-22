@@ -3,15 +3,35 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 100px;
+  overflow: hidden;
   padding: 20px 0px;
   height: 100vh;
-  background-color: #87ceeb31;
+  background: url("./assets/bg.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+  animation: animateBg 5s linear infinite;
 }
 
+@keyframes animateBg {
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+.App .wrapper {
+  padding: 10px;
+  width: 50%;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: transparent;
+  backdrop-filter: blur(15px);
+}
 .App h2 {
   font-size: 3.2rem;
-  color: #87ceeb;
+  color: #fff;
+}
+
+.App p {
+  color: #fff;
 }
 
 .App button.btn {
@@ -26,12 +46,9 @@
 }
 
 .App .online-clipboard-wrapper {
-  width: 50%;
-  border: 1px solid #ddd;
-  border-radius: 6px;
+  width: 100%;
   padding: 20px;
   box-sizing: border-box;
-  box-shadow: 0px 0px 10px 2px #87ceeb66;
 }
 
 .App .online-clipboard-wrapper .nav-tabs .nav-item button.nav-link.active {
@@ -65,21 +82,20 @@
   border: 0;
 }
 @media screen and (max-width: 900px) {
-  .App h2 {
-    font-size: 2.8rem;
-    color: #87ceeb;
+  .App .wrapper {
+    width: 70%;
   }
-  .App .online-clipboard-wrapper {
-    width: 80%;
+  .App h2 {
+    font-size: 2.4rem;
   }
 }
 
 @media screen and (max-width: 500px) {
-  .App h2 {
-    font-size: 2rem;
-    color: #87ceeb;
+  .App .wrapper {
+    width: 98%;
   }
-  .App .online-clipboard-wrapper {
-    width: 90%;
+
+  .App h2 {
+    font-size: 1.6rem;
   }
 }

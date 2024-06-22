@@ -1,14 +1,10 @@
 import React, { useState } from "react";
-import useWindowSize from "react-use/lib/useWindowSize";
-import Confetti from "react-confetti";
 import { supabase } from "../Utils/supabase";
 import { SendHorizontal } from "lucide-react";
-import confettiSound from "../assets/confetti-sound.mp3";
+import confettiSound from "../assets/sound.mp3";
 
-const GetMessage = () => {
-  const { width, height } = useWindowSize();
+const GetMessage = ({ fetchedMessage, setFetchedMessage }) => {
   const [secretKey, setSecretKey] = useState("");
-  const [fetchedMessage, setFetchedMessage] = useState("");
 
   const handleGetMessage = async () => {
     setFetchedMessage("");
@@ -42,16 +38,6 @@ const GetMessage = () => {
 
   return (
     <>
-      {fetchedMessage && (
-        <Confetti
-          width={width}
-          height={height}
-          recycle={false}
-          gravity={0.5}
-          numberOfPieces={700}
-          tweenDuration={6000}
-        />
-      )}
       <div className="d-flex flex-column justify-content-center align-items-center gap-2 my-4 w-100">
         <input
           type="text"
